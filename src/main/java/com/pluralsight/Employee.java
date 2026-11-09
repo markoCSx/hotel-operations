@@ -25,7 +25,7 @@ public class Employee {
     }
 
     public double getRegularHours () {
-        return this.hoursWorked - 40;
+        return this.hoursWorked - getOvertimeHours();
     }
 
     public double getOvertimeHours () {
