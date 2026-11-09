@@ -12,23 +12,28 @@ public class Room {
         this.clean = clean;
     }
 
-    public void setClean (boolean clean) {
-        this.clean = clean;
+    public void cleanRoom () {
+        this.clean = true;
+    }
+
+    public void checkIn () {
+        this.occupied = true;
+        this.clean = false;
+    }
+
+    public void checkOut () {
+        this.occupied = false;
     }
 
     public int getNumberOfBeds () {
         return this.numberOfBeds;
     }
 
-    public void setOccupied (boolean occupied) {
-        this.occupied = occupied;
-    }
-
     public boolean isDirty () {
         if (this.clean) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
