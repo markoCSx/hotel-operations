@@ -30,8 +30,9 @@ public class Reservation {
 
     public int getNumberOfNights () {
         int numberOfNights = 0;
-        if (this.startDate.getMonthValue() != this.endDate.getMonthValue()) {
-            //this.endDate.getMonthValue() -
+
+        for (int i = this.startDate.getMonthValue(); i < this.endDate.getMonthValue(); i++) {
+            numberOfNights += this.startDate.lengthOfMonth() - this.startDate.getDayOfMonth();
         }
         for (int i = this.startDate.getDayOfMonth(); i < this.endDate.getDayOfMonth(); i++) {
             numberOfNights ++;
