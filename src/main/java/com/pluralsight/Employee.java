@@ -28,9 +28,9 @@ public class Employee {
             case 2 -> {
                 LocalTime punchOutTime = LocalTime.now().plusHours(8);
                 if (punchOutTime.getHour() < punchInTime.getHour()) {
-                    hoursWorked += ((punchOutTime.getHour() + 24) - punchInTime.getHour()) + (punchOutTime.getMinute() - punchInTime.getMinute());
+                    hoursWorked += ((punchOutTime.getHour() + 24) - punchInTime.getHour()) + ((punchOutTime.getMinute() - punchInTime.getMinute()) / 60.0);
                 } else {
-                    hoursWorked += (punchOutTime.getHour() - punchInTime.getHour()) + (punchOutTime.getMinute() - punchInTime.getMinute());
+                    hoursWorked += (punchOutTime.getHour() - punchInTime.getHour()) + ((punchOutTime.getMinute() - punchInTime.getMinute()) / 60.0);
                 }
                 timeCard --;
             }
