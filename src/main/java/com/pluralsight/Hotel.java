@@ -46,11 +46,15 @@ public class Hotel {
     }
 
     public int getAvailableSuites () {
-        return this.numberOfSuites - this.bookedSuites;
+        int availableSuites = this.numberOfSuites - this.bookedSuites;
+        System.out.println("There are " + availableSuites + " available suites");
+        return availableSuites;
     }
 
     public int getAvailableRooms () {
-        return this.numberOfRooms - this.bookedBasicRooms;
+        int availableRooms = this.numberOfRooms - this.bookedBasicRooms;
+        System.out.println("There are " + availableRooms + " available suites");
+        return availableRooms;
     }
 
 }
