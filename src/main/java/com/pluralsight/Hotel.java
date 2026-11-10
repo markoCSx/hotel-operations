@@ -30,7 +30,7 @@ public class Hotel {
                 System.out.println(roomCount + " suites have been booked.");
                 return true;
             } else {
-                System.out.printf("We only have %d suites avaialable", this.numberOfSuites - this.bookedSuites);
+                System.out.printf("We only have %d suites avaialable", getAvailableSuites());
                 return false;
             }
         } else {
@@ -39,7 +39,7 @@ public class Hotel {
                 System.out.println(roomCount + " basic rooms have been booked.");
                 return true;
             } else {
-                System.out.printf("We only have %d basic rooms avaialable", this.numberOfRooms - this.bookedBasicRooms);
+                System.out.printf("We only have %d basic rooms avaialable", getAvailableRooms());
                 return false;
             }
         }
