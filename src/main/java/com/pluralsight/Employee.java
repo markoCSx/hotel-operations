@@ -4,13 +4,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Employee {
-    private long employeeId;
-    private String name;
-    private String department;
-    private double payRate;
-    private double hoursWorked;
-    private LocalTime punchInTime;
-    private int timeCard = 1;
+    long employeeId;
+    String name;
+    String department;
+    double payRate;
+    double hoursWorked;
+    LocalTime punchInTime;
+    int timeCard = 1;
 
     public Employee (long employeeId, String name, String department, double payRate) {
         this.employeeId = employeeId;
@@ -20,17 +20,21 @@ public class Employee {
     }
 
     public void punchTimeCard () {
+        punchTimeCard(LocalTime.now());
+    }
+
+
+    public void punchTimeCard (LocalTime time) {
         switch (timeCard) {
             case 1 -> {
-                punchInTime = LocalTime.now();
+                punchInTime = time;
                 timeCard++;
             }
             case 2 -> {
-                LocalTime punchOutTime = LocalTime.now().plusHours(8);
-                if (punchOutTime.getHour() < punchInTime.getHour()) {
-                    hoursWorked += ((punchOutTime.getHour() + 24) - punchInTime.getHour()) + ((punchOutTime.getMinute() - punchInTime.getMinute()) / 60.0);
+                if (time.getHour() < punchInTime.getHour()) {
+                    hoursWorked += ((time.getHour() + 24) - punchInTime.getHour()) + ((time.getMinute() - punchInTime.getMinute()) / 60.0);
                 } else {
-                    hoursWorked += (punchOutTime.getHour() - punchInTime.getHour()) + ((punchOutTime.getMinute() - punchInTime.getMinute()) / 60.0);
+                    hoursWorked += (time.getHour() - punchInTime.getHour()) + ((time.getMinute() - punchInTime.getMinute()) / 60.0);
                 }
                 timeCard --;
             }
