@@ -25,7 +25,7 @@ public class Hotel {
 
     public boolean bookRoom(int roomCount, boolean suite) {
         if (suite) {
-            if (roomCount <= this.numberOfSuites - this.bookedSuites) {
+            if (roomCount <= getAvailableSuites()) {
                 this.bookedSuites += roomCount;
                 System.out.println(roomCount + " suites have been booked.");
                 return true;
@@ -34,7 +34,7 @@ public class Hotel {
                 return false;
             }
         } else {
-            if (roomCount <= this.numberOfRooms - this.bookedBasicRooms) {
+            if (roomCount <= getAvailableRooms()) {
                 this.bookedBasicRooms += roomCount;
                 System.out.println(roomCount + " basic rooms have been booked.");
                 return true;
@@ -44,4 +44,13 @@ public class Hotel {
             }
         }
     }
+
+    public int getAvailableSuites () {
+        return this.numberOfSuites - this.bookedSuites;
+    }
+
+    public int getAvailableRooms () {
+        return this.numberOfRooms - this.bookedBasicRooms;
+    }
+
 }
