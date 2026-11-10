@@ -9,8 +9,8 @@ public class Main {
         Room r1 = new Room(2, false, true);
         Reservation newReservation = new Reservation(LocalDate.parse("2026-11-09"), LocalDate.parse("2026-12-16"), "king");
         Employee e1 = new Employee(11111, "Martin Kolaj", "Redundancy", 21.50);
-        e1.punchTimeCard(1);
-        e1.punchTimeCard(2);
+        e1.punchTimeCard();
+        e1.punchTimeCard();
         System.out.println(e1.getTotalPay());
         System.out.println(newReservation.getNumberOfNights());
         System.out.println(newReservation.getPrice());

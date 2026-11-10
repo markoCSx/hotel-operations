@@ -10,6 +10,7 @@ public class Employee {
     private double payRate;
     private double hoursWorked;
     private LocalTime punchInTime;
+    private int timeCard = 1;
 
     public Employee (long employeeId, String name, String department, double payRate) {
         this.employeeId = employeeId;
@@ -18,10 +19,11 @@ public class Employee {
         this.payRate = payRate;
     }
 
-    public void punchTimeCard (int option) {
-        switch (option) {
+    public void punchTimeCard () {
+        switch (timeCard) {
             case 1 -> {
                 punchInTime = LocalTime.now();
+                timeCard++;
             }
             case 2 -> {
                 LocalTime punchOutTime = LocalTime.now().plusHours(8);
@@ -30,15 +32,12 @@ public class Employee {
                 } else {
                     hoursWorked += (punchOutTime.getHour() - punchInTime.getHour()) + (punchOutTime.getMinute() - punchInTime.getMinute());
                 }
+                timeCard --;
             }
             default -> {
                 System.out.println("Where'd you get that option");
             }
         }
-    }
-
-    public void setHoursWorked (double hoursWorked) {
-        this.hoursWorked = hoursWorked;
     }
 
     public double getTotalPay () {

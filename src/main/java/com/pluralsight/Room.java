@@ -6,23 +6,29 @@ public class Room {
     private boolean clean;
 
 
-    public Room (int numberOfBeds, boolean occupied, boolean clean) {
+    public Room (int numberOfBeds) {
         this.numberOfBeds = numberOfBeds;
-        this.occupied = occupied;
-        this.clean = clean;
-    }
-
-    public void cleanRoom () {
         this.clean = true;
     }
 
-    public void checkIn () {
-        this.occupied = true;
-        this.clean = false;
+    public boolean cleanRoom () {
+        this.clean = true;
+        return clean;
     }
 
-    public void checkOut () {
+    public boolean checkIn () {
+        if (occupied || isDirty()) {
+            System.out.println("Room is unavailable");
+            return false;
+        }
+        this.occupied = true;
+        this.clean = false;
+        return true;
+    }
+
+    public boolean checkOut () {
         this.occupied = false;
+        return !this.occupied;
     }
 
     public int getNumberOfBeds () {
@@ -30,19 +36,11 @@ public class Room {
     }
 
     public boolean isDirty () {
-        if (this.clean) {
-            return false;
-        } else {
-            return true;
-        }
+        return !this.clean;
     }
 
     public boolean isAvailable () {
-        if (this.occupied) {
-            return false;
-        } else {
-            return true;
-        }
+        return !this.occupied;
     }
 
 }
